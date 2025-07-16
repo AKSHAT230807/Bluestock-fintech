@@ -1,28 +1,32 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+// File: App.tsx
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import LoginScreen from './android/app/src/screens/LoginScreen';
+import SignupScreen from './android/app/src/screens/SignupScreen';
+import DashboardScreen from './android/app/src/screens/DashboardScreen';
+import IpoListScreen from './android/app/src/screens/IpoListScreen';
+// import IpoDetailScreen from './android/app/src/screens/IpoDetailScreen';
+import TransactionHistoryScreen from './android/app/src/screens/TransactionHistoryScreen';
+import ProfileScreen from './android/app/src/screens/ProfileScreen';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const Stack = createNativeStackNavigator();
 
+const App = () => {
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen name="Dashboard" component={DashboardScreen} />
+        <Stack.Screen name="IpoList" component={IpoListScreen} />
+        {/* <Stack.Screen name="IpoDetail" component={IpoDetailScreen} /> */}
+        <Stack.Screen name="TransactionHistory" component={TransactionHistoryScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;
