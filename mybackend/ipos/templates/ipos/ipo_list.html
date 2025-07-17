@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IPO List</title>
+</head>
+<body>
+    <h1>Upcoming IPOs</h1>
+    <ul>
+        {% for ipo in ipos %}
+            <li>{{ ipo.name }} - {{ ipo.date }} - {{ ipo.price }} - {{ ipo.status }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
